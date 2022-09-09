@@ -1,4 +1,4 @@
 # Pair-programming 1 
 
-Hello ['tmate'] (https://tmate.io/)
+Hello [`tmate`](https://tmate.io/)
 
