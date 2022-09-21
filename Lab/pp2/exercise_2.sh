@@ -5,6 +5,8 @@
 for f in $(ls); do
 	if [ -x "$f" ]; then
 		echo "'$f' is executable"
+	else
+		echo "'$f' is not executable"
 	fi
 done
 
