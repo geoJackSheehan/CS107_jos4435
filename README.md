@@ -2,6 +2,7 @@
 
 ## Content
 
-* Homework - This is where my homework submission directory for each homework assignment is.
-* Lab - This is where all my work for the pair programming exercises is done.
-
+* Homework
+	- This is where all my work for homework exercises will be, as well as my submission folder.
+* Lab
+	- This is where all my pair programming work wil be.
