@@ -2,174 +2,185 @@
 # File       : P4.py
 # Description: Bank account revisited
 # Copyright 2022 Harvard University. All Rights Reserved.
-
-# So this is my 26 tests passed late day updated version, based on max bank.py (and P4.py) (and late day P4.py) (and 25 tests version)
+# Author: Jack Sheehan. Worked with Chiara Chung-Halpern
 
 from enum import Enum
 
 class Account(Enum):
-    '''
-    Simple enumeration
-    See: https://stackoverflow.com/questions/22586895/python-enum-when-and-where-to-use
-    '''
     SAVINGS = 1
     CHECKING = 2
 
 class BankAccount():
-    '''Class for creating a bank account. Allows for deposits and withdrawals.'''
-    
     def __init__(self, account_type: Account):
         self.account_type = account_type
         self.balance = float(0)
-        
+
     def __str__(self):
         return (f" Account Type: {self.account_type} Account Balance: {self.balance}")
-    
+
     def get_type(self):
         return self.account_type
-    
+
     def get_balance(self):
         return self.balance
 
     def withdraw(self, amount: float):   
         if amount > self.balance:
             raise ValueError("Withdrawal amount can't be larger than balance")   
-        if amount < float(0):
+        if amount < 0:
             raise ValueError("Withdrawal amount can't be negative")    
         self.balance = self.balance - amount
-        return self.balance        
+        return self.balance  
 
     def deposit(self, amount: float):  
-        if amount < float(0):
+        if amount < 0:
             raise ValueError("Deposit amount can't be negative")   
         self.balance = self.balance + amount
-        return self.balance                
-        
-           
-        
-        
-        
-        
-class Customer():
+        return self.balance   
 
+class Customer():
     def __init__(self, name):
-        self.name = name
-        self.saving_account = None
-        self.checking_account = None
- 
+        super(Customer).__init__()
+        self.name = str(name)
+        self.saving = None
+        self.checking = None
+
     def __str__(self):
-        if self.saving_account is None and self.checking_account is None:
-            return f"{self.name} has no active accounts"
-        elif self.saving_account is None:
-            return f"{self.name} has a {self.checking_account.__str__()}"
-        elif self.checking_account is None:
-            return f"{self.name} has a {self.saving_account.__str__()}"
-        else:
-            return f"{self.name} has a {self.saving_account.__str__()} and a {self.checking_account.__str__()}"
+        return (f"Customer name: {self.name} Number of valid accounts: {self.__len__()}Amount in savings: {str(self.saving)} Amount in checking: {str(self.checking)}")
 
     def __len__(self):
-        if self.checking_account is None and self.saving_account is None:
-            return 0
-        if self.checking_account is None and self.saving_account is not None:
-            return 1
-        if self.checking_account is not None and self.saving_account is None:
-            return 1
-        if self.checking_account is not Nonte and self.saving_account is not None:
-            return 2
-    
+        account = 0
+        if self.saving:
+            account += 1
+        if self.checking:
+            account += 1
+        return account
+
     def add_account(self, account_type: Account):
-        
-        if account_type == Account.CHECKING:
-            if self.checking_account == None:
-                self.checking_account = BankAccount(account_type)
-                
+        if account_type.name == 'SAVINGS':
+            if not(self.saving):
+                self.saving = BankAccount(account_type)
             else:
-                raise Exception("Can only have one checking account")
+                raise ValueError('Can only have one savings account')
+        elif account_type.name == 'CHECKING':
+            if not(self.checking):
+                self.checking = BankAccount(account_type)
+            else:
+                raise ValueError('Can only have one checking account')
         else:
-            if self.saving_account == None:
-                self.saving_account = BankAccount(account_type)              
-            else:
-                raise Exception("Can only have one savings account")
+            raise ValueError('Account input error')
 
     def get_balance(self, account_type: Account):
-        if account_type == Account.SAVINGS:
-            if self.saving_account is None:
-                raise Exception("This account does not exist")
+        if account_type.name == 'SAVINGS':
+            if self.saving:
+                print(self.saving.get_balance())
+                return self.saving.get_balance()
             else:
-                return self.saving_account.get_balance()
-        if account_type == Account.CHECKING:
-            if self.checking_account is None:
-                raise Exception("This account does not exist")
+                raise ValueError('This account does not exist')
+        if account_type.name == 'CHECKING':
+            if self.checking:
+                print(self.checking.get_balance())
+                return self.checking.get_balance()
             else:
-                return self.checking_account.get_balance()
+                raise ValueError('This account does not exist')
+        else:
+            raise ValueError('Account input error')
 
     def deposit(self, account_type: Account, amount: float):
-        if account_type == Account.SAVINGS:
-            if self.saving_account is None:
-                raise Exception("This account does not exist")
+        if account_type.name == 'SAVINGS':
+            saving_account = self.saving
+            if saving_account:
+                return saving_account.deposit(amount)
             else:
-                return self.saving_account.deposit(amount)
-        if account_type == Account.CHECKING:
-            if self.checking_account is None:
-                raise Exception("This account does not exist")
+                raise ValueError('This account does not exist')
+        elif account_type.name == 'CHECKING':
+            checking_account = self.checking
+            if checking_account:
+                return checking_account.deposit(amount)
             else:
-                return self.checking_account.deposit(amount)
+                raise ValueError('This account does not exist')
+        else:
+            raise ValueError('Account input error')
 
     def withdraw(self, account_type: Account, amount: float):
-        if account_type == Account.CHECKING:
-            if self.checking_account is None:
-                raise Exxception("This account does not exist")
-            return self.checking_account.withdraw(amount)
-        elif account_type == Account.SAVINGS:
-            if self.saving_account is None:
-                raise Exception("This account does not exist")
-            return self.saving_account.withdraw(amount)
-             
-            
-            
-            
-            
-            
+        if account_type.name == 'SAVINGS':
+            saving_account = self.saving
+            if saving_account:
+                return saving_account.withdraw(amount)
+            else:
+                raise ValueError('This account does not exist')
+        if account_type.name == 'CHECKING':
+            checking_account = self.checking
+            if checking_account:
+                return checking_account.withdraw(amount)
+            else:
+                raise ValueError('This account does not exist')
+        else:
+            raise ValueError('Account input error')
+
 def ATMSession(user: Customer):
     if type(user) is not Customer:
-        raise Exception('User is not type customer')
-    def interface():
-        while True:
-            main_screen = input("1) Exit \n2) Create Account \n3) Check Balance \n4) Deposit \n5 Withdraw \nEnd")
-            selection = int(main_screen)
+        raise ValueError('User is not type customer')
 
-            if selection not in [1,2,3,4,5]:
-                raise ValueError("Invalid Selection.")
+    def interactive_component():
+        option = input("1) Exit \n2) Create Account \n3) Check Balance \n4) Deposit \n5 Withdraw")
 
-            if selection == 1:
-                print("End of Session")
-                return 0
-
-            if selection in [2,3,4,5]:
-                sub_screen = input("1) Checking \n2) Savings \nChoose Account:")
-                if int(sub_screen) == 1:
-                    account_type = Account.CHECKING
-                elif int(sub_screen) == 2:
-                    account_type = Account.SAVINGS
-                elif int(sub_screen) not in [1,2]:
-                    raise ValueError("Invalid Selection")
-
-                if selection == 2:
-                    user.add_account(account_type)
-
-                if selection == 3:
-                    print(user)
-
-                if selection == 4:
-                    deposit_unit = input("Enter Deposit Amount:")
-                    deposit_amount = float(deposit_input)
-                    user.deposit(account_type, deposit_amount)
-
-                if selection == 5:
-                    withdraw_input = input("Enter Withdraw Amount")
-                    withdraw_amount = float(withdraw_input)
-                    user.withdraw(account_type, withdraw_amount)
+        while option is not '1':
+            if option is '2':
+                choose_account = input("1) Checking \n2) Savings")
+                if choose_account == '1':
+                    user.add_account(Account(2))
+                elif choose_account == '2':
+                    user.add_account(Account(1))
+                else:
+                    raise ValueError('Invalid option')
+            elif option is '3':
+                choose_account = input("1) Checking \n2) Savings")
+                if choose_account == '1':
+                    user.get_balance(Account(2))
+                elif choose_account == '2':
+                    user.get_balance(Account(1))
+                else:
+                    raise ValueError('Invalid option')
+            elif option is '4':
+                choose_account = input("1) Checking \n2) Savings")
+                if choose_account == '1':
+                    amount = input('Enter amount:')
+                    try:
+                        amount = float(amount)
+                    except:
+                        raise ValueError('Invalid amount')
+                    user.deposit(Account(2), amount)
+                elif choose_account == '2':
+                    amount = input('Enter amount:')
+                    try:
+                        amount = float(amount)
+                    except:
+                        raise ValueError('Invalid amount')
+                    user.deposit(Account(1), amount)
+                else:
+                    raise ValueError('Invalid option')
+            elif option is '5':
+                choose_account = input("1) Checking \n2) Savings")
+                if choose_account == '1':
+                    amount = input('Enter amount:')
+                    try:
+                        amount = float(amount)
+                    except:
+                        raise ValueError('Invalid amount')
+                    user.withdraw(Account(2), amount)
+                elif choose_account == '2':
+                    amount = input('Enter Amount:')
+                    try:
+                        amount = float(amount)
+                    except:
+                        raise ValueError('Invalid amount')
+                    user.withdraw(Account(1), amount)
+                else:
+                    raise ValueError('Invalid option')
             else:
-                raise Exception("Invalid Selection")
-    return interface
+                raise ValueError('Invalid option')
 
+            option = input("1) Exit \n2) Create Account \n3) Check Balance \n4) Deposit \n5 Withdraw")
+        return 0
+    return interactive_component
