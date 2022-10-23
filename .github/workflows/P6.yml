@@ -1,20 +1,20 @@
 name: HW4 continuous integration
 
 on:
-    push:
-        branches:
-        - 'hw4'
-        
+  push:
+    branches:
+      - 'hw4'
+    
 jobs:
-    test-complex:
-        name: test
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v3
-        - uses: actions/setup-python@v3
+  test_complex:
+    name: test implementation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
         with:
-            python-version: '3.10'
-        - name: install dependency
+          python-version: '3.10'
+      - name: install dependency
         run: pip install pytest
-        - name: test suite
-        run: python -m pytest ~/classes/CS107/git/myrepo/homework/hw4/submissio
+      - name: run suite
+        run: python -m pytest ~/classes/CS107/git/myrepo/homework/hw4/submission
