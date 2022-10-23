@@ -1,5 +1,13 @@
 name: HW4 Continuous Integration
+
 on:
   push:
     branches: 
      - 'hw4'
+
+jobs:
+    my_first_ci_job:
+        runs-on: ubuntu-latest
+        steps:
+            - run: date
+            - run: hostname
