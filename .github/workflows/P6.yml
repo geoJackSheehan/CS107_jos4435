@@ -11,3 +11,15 @@ jobs:
         steps:
             - run: date
             - run: hostname
+
+    test_complex:
+        name: Test Python implementation of complex numbers
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-python@v3
+            with: python-version: '3.10'
+            - name: Install Python dependencies
+            run: pip install pytest
+            - name: Run complex test suite
+            run: ~/classes/CS107/git/myrepo/homework/hw4/submission
