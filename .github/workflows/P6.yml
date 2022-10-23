@@ -16,5 +16,5 @@ jobs:
           python-version: '3.10'
       - name: install dependency
         run: pip install pytest
-      - name: run suite
+      - name: run test suite
         run: python -m pytest ~/classes/CS107/git/myrepo/homework/hw4/submission
