@@ -12,10 +12,10 @@ jobs:
             - run: date
             - run: hostname
 
-test_complex:
-    name: Test Python implementation of complex numbers
-    runs-on: ubuntu-latest
-    steps:
+    test_complex:
+        name: Test Python implementation of complex numbers
+        runs-on: ubuntu-latest
+        steps:
         # Checkout the head of branch `hw4` (what you just pushed)
         # See: https://github.com/actions/checkout
         - uses: actions/checkout@v3
