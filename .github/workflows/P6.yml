@@ -17,4 +17,4 @@ jobs:
       - name: install dependency
         run: pip install pytest
       - name: run test suite
-        run: python -m pytest ~/classes/CS107/git/myrepo/homework/hw4/submission
+        run: python -m pytest ./homework/hw4/submission
