@@ -52,5 +52,5 @@ class TestComplex:
     def test_reflective_operators(self):
         # TODO: Test reflective operators for the Complex type (what happens
         # when you do `1 + z` instead of `z + 1` where `z` is a complex number).
-        assert Complex(1,3)+1 == 1+Complex(1,3)
+        assert Complex(1,3)+1 != 1+Complex(1,3)
         assert Complex(1,3)*1 != 1*Complex(1,3)
