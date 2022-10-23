@@ -1,8 +1,5 @@
 name: HW4 Continuous Integration
-
 on:
-	push:
-		branches:
-			- 'hw4'
-
-
+  push:
+    branches: 
+     - 'hw4'
