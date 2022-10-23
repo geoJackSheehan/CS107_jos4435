@@ -15,11 +15,16 @@ jobs:
     test_complex:
         name: Test Python implementation of complex numbers
         runs-on: ubuntu-latest
-	steps:
+        steps:
+            # Checkout the head of branch `hw4` (what you just pushed)
+            # See: https://github.com/actions/checkout
             - uses: actions/checkout@v3
+            # Setup Python environment in the container
+            # See: https://github.com/actions/setup-python
             - uses: actions/setup-python@v3
-            with: python-version: '3.10'
+            with:
+                python-version: '3.10' # let's use a recent version
             - name: Install Python dependencies
             run: pip install pytest
-            - name: Run complex test suite
+            - name: Run complex number test suite
             run: ~/classes/CS107/git/myrepo/homework/hw4/submission
