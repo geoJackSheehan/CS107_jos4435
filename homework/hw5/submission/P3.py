@@ -74,7 +74,7 @@ class BinarySearchTree:
             node.right = self._put(node.right,key,val)
         else:
             node.val = val
-        node._subtree_size = 1+self._subtree_size(node.left)+self._subtree_size(node.right)
+        node.size = 1+self._subtree_size(node.left)+self._subtree_size(node.right)
         return node
 
     def _get(self, node, key):
