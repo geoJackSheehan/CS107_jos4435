@@ -1,0 +1,37 @@
+2022-10-23T18:54:19.0353514Z Requested labels: ubuntu-latest
+2022-10-23T18:54:19.0353998Z Job defined at: CS107/jos4435/.github/workflows/P6.yml@refs/heads/hw4
+2022-10-23T18:54:19.0354236Z Waiting for a runner to pick up this job...
+2022-10-23T18:54:19.3074476Z Job is about to start running on the runner: ip-10-37-244-116 (enterprise)
+2022-10-23T18:54:23.6264184Z Current runner version: '2.289.3'
+2022-10-23T18:54:23.6271555Z Runner name: 'ip-10-37-244-116'
+2022-10-23T18:54:23.6272187Z Runner group name: 'Default'
+2022-10-23T18:54:23.6272896Z Machine name: 'ip-10-37-244-116'
+2022-10-23T18:54:23.6275137Z ##[group]GITHUB_TOKEN Permissions
+2022-10-23T18:54:23.6275933Z Actions: write
+2022-10-23T18:54:23.6276265Z Checks: write
+2022-10-23T18:54:23.6276555Z Contents: write
+2022-10-23T18:54:23.6276903Z Deployments: write
+2022-10-23T18:54:23.6277291Z Discussions: write
+2022-10-23T18:54:23.6277577Z Issues: write
+2022-10-23T18:54:23.6277912Z Metadata: read
+2022-10-23T18:54:23.6278241Z Packages: write
+2022-10-23T18:54:23.6278529Z Pages: write
+2022-10-23T18:54:23.6278896Z PullRequests: write
+2022-10-23T18:54:23.6279273Z RepositoryProjects: write
+2022-10-23T18:54:23.6279683Z SecurityEvents: write
+2022-10-23T18:54:23.6279989Z Statuses: write
+2022-10-23T18:54:23.6280347Z ##[endgroup]
+2022-10-23T18:54:23.6284358Z Secret source: Actions
+2022-10-23T18:54:23.6285042Z Prepare workflow directory
+2022-10-23T18:54:23.7079908Z Prepare all required actions
+2022-10-23T18:54:23.8596277Z ##[group]Run date
+2022-10-23T18:54:23.8596779Z [36;1mdate[0m
+2022-10-23T18:54:23.8635719Z shell: /usr/bin/bash -e {0}
+2022-10-23T18:54:23.8636160Z ##[endgroup]
+2022-10-23T18:54:23.9087262Z Sun Oct 23 14:54:23 EDT 2022
+2022-10-23T18:54:23.9244104Z ##[group]Run hostname
+2022-10-23T18:54:23.9244453Z [36;1mhostname[0m
+2022-10-23T18:54:23.9263462Z shell: /usr/bin/bash -e {0}
+2022-10-23T18:54:23.9263892Z ##[endgroup]
+2022-10-23T18:54:23.9319577Z ip-10-37-244-116
+2022-10-23T18:54:23.9496546Z Cleaning up orphan processes
