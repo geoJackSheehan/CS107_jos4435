@@ -5,9 +5,6 @@
 
 # worked with Annabel Yim
 
-import re
-
-
 class Text:
     """Text representation with word iteration support.
     Example:
